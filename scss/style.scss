@@ -1,0 +1,307 @@
+$primary-color: #f0981d;
+$primary-light: #f0a53d;
+$seconday-color: #383838;
+$seconday-dark: #000;
+
+@mixin flex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+html,
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  font-family: "Poppins", serif;
+  color: $seconday-color;
+}
+li {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+
+header {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  @include flex(row, space-between, center);
+
+  nav {
+    width: 100%;
+    height: 3em;
+    position: absolute;
+    top: 0;
+    margin: 0;
+    padding: 0;
+
+    @include flex(row, space-between, center);
+    .logo {
+      width: 7%;
+      height: 100%;
+      background: url("../res/img/iceLogo.svg") no-repeat center;
+      background-size: contain;
+      margin-left: 1.4em;
+    }
+    .menu {
+      width: 10em;
+      height: 100%;
+      background-image: linear-gradient(
+        to left,
+        $primary-color 50%,
+        $primary-light 50%
+      );
+      background-size: 200% 100%;
+      transition: background-position 0.5s;
+      z-index: 1;
+
+      &:hover {
+        cursor: pointer;
+        background-position: 100% 0;
+      }
+
+      @include flex(row, space-around, center);
+      .burger {
+        width: 30%;
+        height: 100%;
+        background: $primary-color;
+        z-index: 1;
+        transition: 0.5s ease;
+
+        @include flex(column, center, center);
+
+        .line {
+          width: 1.6em;
+          height: 2px;
+          margin: 2px 0;
+          background: #fff;
+          z-index: 99;
+          transition: 0.5s;
+        }
+        .line2 {
+          width: 1.2em;
+          margin-left: 0.4em;
+        }
+        .line3 {
+          width: 0.7em;
+          margin-left: 0.9em;
+        }
+      }
+      h2 {
+        width: 70%;
+        display: inline-block;
+        text-align: center;
+        font-weight: 600;
+        font-size: 1em;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: white;
+      }
+    }
+  }
+
+  .left {
+    height: 100%;
+    width: 40%;
+    position: relative;
+    @include flex(column, center, none);
+
+    .left-heading {
+      width: 100%;
+      height: 20%;
+      position: absolute;
+      left: 10em;
+      padding: 10px;
+      h1 {
+        font-size: 4.5em;
+        z-index: 9;
+        margin: 0;
+        line-height: 1.1em;
+        span {
+          color: $primary-light;
+        }
+      }
+      p {
+        width: 100%;
+        margin: 0px 0;
+        font-size: 0.9em;
+        line-height: 1.2em;
+      }
+    }
+    .scroll-down {
+      height: 3em;
+      display: flex;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 13em;
+      background-image: linear-gradient(
+        to left,
+        $primary-color 50%,
+        $primary-light 50%
+      );
+      background-size: 200% 100%;
+      transition: background-position 0.5s;
+      z-index: 1;
+      @include flex(row, center, center);
+
+      &:hover {
+        background-position: 100% 0;
+        cursor: pointer;
+
+        i {
+          transform: scale(1.1);
+        }
+      }
+      h2 {
+        width: 75%;
+        font-size: 1em;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: white;
+        text-align: center;
+      }
+      .scroll-icon {
+        height: 100%;
+        width: 25%;
+        color: white;
+        background: $primary-color;
+        @include flex(row, center, center);
+      }
+    }
+  }
+  .right {
+    height: 100%;
+    width: 60%;
+    background: url("../res/img/iceCream.jpg") no-repeat center;
+    background-size: cover;
+
+    .follow-links {
+      height: 100%;
+      width: 2.8em;
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      li {
+        @include flex(column, center, center);
+        height: 3em;
+        width: 2.8em;
+        background: $primary-light;
+        a {
+          display: block;
+          color: white;
+          font-size: 1.2em;
+          padding: 10px 10px;
+          transition: 0.5s ease;
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+      }
+    }
+
+    // ------------------NAV BAR-----------------
+    .navBar {
+      height: 94%;
+      width: 10em;
+      position: absolute;
+      top: 3em;
+      right: 0;
+      background: $primary-color;
+      z-index: 9;
+      transform: translateX(12em);
+      transition: 0.5s;
+      @include flex(column, center, center);
+
+      .nav-links {
+        width: 100%;
+        height: 30%;
+        z-index: 99;
+
+        @include flex(column, space-between, center);
+
+        li {
+          width: 100%;
+          margin: 5px 0;
+          padding: 15px 0;
+          position: relative;
+
+          @include flex(row, center, center);
+
+          a {
+            color: white;
+            font-weight: 600;
+            font-size: 0.9em;
+          }
+
+          i {
+            margin-right: 10px;
+            font-size: 0.8em;
+            color: white;
+            transition: 0.3s;
+          }
+
+          &:hover {
+            cursor: pointer;
+            color: red;
+            background: $primary-light;
+            i {
+              transform: translateX(-10px);
+            }
+          }
+          &:hover ul {
+            display: block;
+            opacity: 1;
+            transform: translateX(0em) scale(1);
+          }
+        }
+
+        li ul {
+          width: 100%;
+          position: absolute;
+          right: 10em;
+          top: 0em;
+          background: $primary-color;
+          padding: 0;
+          margin: 0;
+          transition: 0.3s;
+          opacity: 0;
+          transform: translateX(10em) scale(0);
+
+          li {
+            margin: 0;
+            a {
+              font-size: 0.8em;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.rotate {
+  background-position: 100% 0;
+}
+
+.rotate .line1 {
+  transform: rotate(45deg) translate(2px, 4px);
+}
+.rotate .line2 {
+  width: 1.6em !important;
+  transform: rotate(-45deg) translate(0, -4px);
+}
+.rotate .line3 {
+  transform: scale(0);
+}
+.openNav {
+  transform: translateX(0) !important;
+}
